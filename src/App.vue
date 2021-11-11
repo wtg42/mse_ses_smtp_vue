@@ -1,6 +1,6 @@
 <template>
   <div id="nav">
-123
+    <router-link to="/">Send Mail</router-link>
   </div>
   <router-view/>
 </template>
