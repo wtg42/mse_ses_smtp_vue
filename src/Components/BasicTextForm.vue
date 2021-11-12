@@ -1,7 +1,5 @@
     <template>
 <div id="nesscss">
-    <div class="flex">
-    </div>
     <form @submit.prevent="handleSubmit()">
     <div class="nes-container with-title mx-20 mt-10 mb-10">
         <h3 class="title">Send Mail With Basic Text</h3>
@@ -38,18 +36,18 @@
 </template>
 
 <script>
-// import SubmitBtn from "@Components/SubmitBtn.vue";
 import { ref } from "vue";
 
 export default {
   props:['ipList'],
-  setup(props) {
+  setup() {
     const senderEmail = ref("weitingshih@softnext.com.tw")
     const receiverEmail = ref("weitingshih@rd01.softnext.com.tw")
     const subject = ref("test mail")
     const contents = ref("this is default contents.")
     const selected = ref('192.168.91.172')
-    const formData = useForm({
+    // const selected = ref(props.ipList)
+    const formData = ref({
         senderEmail: String,
         receiverEmail: String,
         subject: String,

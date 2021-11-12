@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import SendMailToMSE from '../views/SendMailToMSE'
+import SendMailToMSE from '../views/SendMailToMSE.vue'
 
 const routes = [
   {
@@ -10,7 +10,7 @@ const routes = [
   },
   {
     path: '/sendMailToMSE',
-    name: 'sendMailToMSE',
+    name: 'SendMailToMSE',
     component: SendMailToMSE
   }
 ]

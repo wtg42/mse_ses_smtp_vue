@@ -1,8 +1,8 @@
 <template>
-  <div class="home">
-    <div class="">
-      <p>124</p>
-    </div>
+  <div class="home mt-10">
+    <ul>
+      <li>This is my home.</li>
+    </ul>
   </div>
 </template>
 
