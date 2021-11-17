@@ -6,7 +6,7 @@
         <label for="ip_selector"></label>
         <div class="nes-field nes-select">
             <select name="ip_selector" id="ip_selector" v-model="selected">
-                <option v-for="ip in ipList" :key="ip">{{ ip }}</option>
+                <option v-for="ip in ipList" :key="ip.id">{{ ip.name }}</option>
             </select>
         </div>
         <div class="nes-field mt-10">
@@ -40,13 +40,13 @@ import { ref } from "vue";
 
 export default {
   props:['ipList'],
-  setup() {
+  setup(props) {
     const senderEmail = ref("weitingshih@softnext.com.tw")
     const receiverEmail = ref("weitingshih@rd01.softnext.com.tw")
     const subject = ref("test mail")
     const contents = ref("this is default contents.")
-    const selected = ref('192.168.91.172')
-    // const selected = ref(props.ipList)
+    const selected = ref(props.ipList[0].name) // ip default selected binding.
+
     const formData = ref({
         senderEmail: String,
         receiverEmail: String,

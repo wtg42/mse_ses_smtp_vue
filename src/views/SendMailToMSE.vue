@@ -1,9 +1,9 @@
 <template>
   <div class="py-12">
-    <div v-if="ipList.length > 0" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <BasicTextForm :ipList="ipList" />
+    <div v-if="ipList.data && ipList.data.length > 0" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <BasicTextForm :ipList="ipList.data" />
     </div>
-    <div v-else-if="!ipList.length && !error" class="max-w-7xl mx-auto sm:px-24 lg:px-24">
+    <div v-else-if="!ipList.data && !error" class="max-w-7xl mx-auto sm:px-24 lg:px-24">
       <progress class="nes-progress is-pattern" :value="progress" max="100"></progress>
     </div>
     <div v-else-if="error" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -29,7 +29,7 @@ export default {
     const load = async () => {
       try {
         await waitUntil(progress, 50)
-        let data = await fetch('http://localhost:3004/IPList')
+        let data = await fetch('http://api.ses.smtp/api/IPList')
         if (!data.ok) {
           throw new Error(data.statusText)
         }
