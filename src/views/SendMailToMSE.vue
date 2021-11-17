@@ -6,7 +6,7 @@
     <div v-else-if="!ipList.data && !error" class="max-w-7xl mx-auto sm:px-24 lg:px-24">
       <progress class="nes-progress is-pattern" :value="progress" max="100"></progress>
     </div>
-    <div v-else-if="error" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div v-else-if="error" class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-center">
       <p>{{ error }}</p>
     </div>
   </div>
@@ -30,11 +30,16 @@ export default {
       try {
         await waitUntil(progress, 50)
         let data = await fetch('http://api.ses.smtp/api/IPList')
-        if (!data.ok) {
-          throw new Error(data.statusText)
+        if (data.status >= 500) {
+          throw new Error('Opps! Data not found.')
         }
         await waitUntil(progress, 100)
-        ipList.value = await data.json()
+        if (!data.ok) {
+          let mess = await data.json()
+          error.value = mess[0]
+        } else {
+          ipList.value = await data.json()
+        }        
       } catch (err) {
         error.value = err.message
       }
