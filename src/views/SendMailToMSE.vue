@@ -14,7 +14,8 @@
 
 <script>
 import BasicTextForm from "@/components/BasicTextForm.vue";
-import getMseIpLists from "@/composables/getMseIpLists"
+import getMseIpLists from "@/composables/getMseIpLists.js"
+import { jobQueueApi } from "@/composables/api.js"
 export default {
   name: "SendMailToMSE",
   components: {
@@ -23,6 +24,23 @@ export default {
   setup() {
     const { progress, ipList, error, load } = getMseIpLists()
     load()
+    jobQueueApi()
+    .then(function (response) {
+        // Success
+        console.log('success');
+        console.log(response.status);
+        console.log(response.data);
+    })
+    .catch(function (error) {
+        // Error
+        console.log(error);
+
+        // Error 的詳細資訊
+        console.log(error.response);
+    })
+    .then(function () {
+        console.log('always executed');
+    });
     return { ipList, error, progress }
   }
 }
