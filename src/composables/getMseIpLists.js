@@ -1,5 +1,5 @@
 import { ref } from 'vue';
-
+import { ipListApi } from '@/composables/api';
 const getMseIpLists = () => {
     const progress = ref(1)
     const ipList = ref([])
@@ -7,17 +7,12 @@ const getMseIpLists = () => {
     const load = async () => {
         try {
             await waitUntil(progress, 50)
-            let data = await fetch('http://api.ses.smtp/api/IPList')
-            if (data.status >= 500) {
+            let response = await ipListApi()
+            if (response.status >= 500) {
                 throw new Error('Opps! Data not found.')
             }
             await waitUntil(progress, 100)
-            if (!data.ok) {
-                let mess = await data.json()
-                error.value = mess[0]
-            } else {
-                ipList.value = await data.json()
-            }
+            ipList.value = response.data
         } catch (err) {
             error.value = err.message
         }
