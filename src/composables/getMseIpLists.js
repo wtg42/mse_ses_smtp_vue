@@ -9,7 +9,7 @@ const getMseIpLists = () => {
             await waitUntil(progress, 50)
             let response = await ipListApi()
             if (response.status >= 500) {
-                throw new Error('Opps! Data not found.')
+                throw new Error('Opps! server have some problms.')
             }
             await waitUntil(progress, 100)
             ipList.value = response.data
@@ -26,7 +26,7 @@ const getMseIpLists = () => {
                     resolve('foo');
                     clearInterval(interval);
                 };
-            }, 5);
+            }, 2);
         });
     }
     return { progress, ipList, error, load }

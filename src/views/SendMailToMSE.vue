@@ -21,6 +21,7 @@ export default {
     BasicTextForm,
   },
   setup() {
+    // 跟資料庫要機器 IP 資料顯示
     const { progress, ipList, error, load } = getMseIpLists()
     load()
     return { ipList, error, progress }
