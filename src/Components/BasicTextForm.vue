@@ -46,8 +46,8 @@ export default {
     const formData = ref({
         from: ref("weitingshih@softnext.com.tw"),
         to: ref("weitingshih@rd01.softnext.com.tw"),
-        subject: ref("5570"),
-        contents: ref("this is default contents."),
+        subject: ref("Hello guys."),
+        contents: ref("the mail from hell."),
         ip: ref(props.ipList[0].name),
     })
 
@@ -57,6 +57,9 @@ export default {
         sendMailApi(data)
         .then(res => {
             console.log(res.status)
+            if (res.status == 200) {
+                alert('Success!');
+            }
         })
         .catch(err => console.log(err.message))
     }
