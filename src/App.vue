@@ -3,6 +3,7 @@
       <div class="flex flex-row justify-center items-center mt-10">
       <div class="ml-4"><i class="nes-icon coin"></i></div><div class="ml-2"><router-link :to="{ name:'Home' }">Home</router-link></div>
       <div class="ml-4"><i class="nes-icon coin"></i></div><div class="ml-2"><router-link :to="{ name:'SendMailToMSE' }">Send Mail</router-link></div>
+      <div class="ml-4"><i class="nes-icon coin"></i></div><div class="ml-2"><router-link :to="{ name:'Manager' }">Manger</router-link></div>
       </div>
     </ul>
   <router-view/>
