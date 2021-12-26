@@ -36,7 +36,7 @@ export default {
     // 要求顯示的內容
     const dialogRequest = ref({titile: ref(""), body: ref("")})
 
-    // 參照變數
+    // DOM 綁定變數
     const roundedDialogRef = ref()
 
     // 通知 dialog 顯示並帶入資訊

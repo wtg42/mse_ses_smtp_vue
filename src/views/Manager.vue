@@ -7,28 +7,51 @@
         <!-- 選單硬幣 hover 才會出現 -->
         <i class="nes-icon coin is-small"></i>
       </span>
-      <span @mouseout="changeBtnStatus(btn)" @mouseover="changeBtnStatus(btn)" class="m-3">
+      <span @mouseout="changeBtnStatus(btn)" @mouseover="changeBtnStatus(btn)" @click="showForm()" class="m-3" >
         <button>{{ btn.text }}</button>
       </span>
     </div>
   </div>
+  <ManagerDialog ref="managerDialogRef" v-model:dialogRequest="dialogRequest"/>
 </template>
 
+<!-- 改用 vue 3.2 新寫法試試  -->
 <script setup>
 import { ref } from "vue";
+// import { useRoute, useRouter } from "vue-router";
+import ManagerDialog from "@/components/ManagerDialog.vue";
+
+// get route instance
+// const router = useRouter();
+// const route = useRoute();
+
+// router func not use
+// const goto = () => router.push({ name: routerName })
+
+// show add, edit, modify form by dialog
+const showForm = () => {
+  managerDialogRef.value.showModal()
+}
+
+// RoundedDialog component 要顯示的內容
+const dialogRequest = ref({title: ref(""), body: ref("")})
+
+// DOM 綁定變數
+const managerDialogRef = ref()
 
 // 選單 btn 用 v-for 產生 grid 屬性吃 class
 const btns = ref([
   {key: 0, visible: true, class: 'grid-item-add', text: 'ADD NEW MSE TARGET'},
   {key: 1, visible: true, class: 'grid-item-remove', text: 'REMOVE EXISTS TARGET'},
-  {key: 2, visible: true, class: 'grid-item-edit', text: 'MODIFY TARGET PROPERTY'}
+  {key: 2, visible: true, class: 'grid-item-edit', text: 'MODIFY TARGET PROPERTY'},
 ])
 
-// 選單 coin 的顯示狀態 控制 tailwind 的 invisible
+// 選單 coin 的 hover 顯示狀態 控制 tailwind 的 invisible
 const changeBtnStatus = (coin) => {
   coin.visible = !coin.visible
 }
 </script>
+
 
 <style scoped>
 /* 2 x 10 grid */

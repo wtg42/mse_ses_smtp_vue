@@ -2,13 +2,6 @@
   <div>
     <!-- Rounded dialog -->
     <section>
-      <!-- <button
-        type="button"
-        class="nes-btn is-primary"
-        onclick="document.getElementById('dialog-rounded').showModal();"
-      >
-        Open rounded dialog
-      </button> -->
       <dialog class="nes-dialog is-rounded" id="dialog-rounded">
         <form method="dialog">
           <!-- 可用 props 顯示 -->
@@ -30,6 +23,7 @@ import { computed, ref } from "vue"
 export default {
   props: ["dialogRequest"],
   setup(props) {
+    console.log(props.dialogRequest)
     // Dialog 動態顯示參數
     const dialogMsg = ref({
       title: ref(''),

@@ -60,46 +60,13 @@
   </div>
 </template>
 
+
 <script>
-import { ref } from "vue";
-import { sendMailApi } from "@/composables/api.js";
-
 export default {
-  props: ["ipList"],
-  emits: ['showModal'],// emit 訊息給上層
-  setup(props, context) {
-    // 表單項目
-    const formData = ref({
-      from: ref("weitingshih@softnext.com.tw"),
-      to: ref("weitingshih@rd01.softnext.com.tw"),
-      subject: ref("Hello guys."),
-      contents: ref("the mail from hell."),
-      ip: ref(props.ipList[0].name),
-    });
 
-    // argument of data from template is not ref object...
-    const handleSubmit = (data) => {
-      sendMailApi(data)
-        .then((res) => {
-          console.log(res.status);
-          if (res.status == 200) {
-            // 呼叫 dialog 秀訊息
-            context.emit('showModal', {title: "Send mail to " + data.ip + " Succeeded", body: "status: " + res.status})
-          }
-        })
-        .catch((err) => {
-          // 呼叫 dialog 秀訊息
-          context.emit('showModal', {title: "Opps!", body: err.message})
-        });
-    };
-    return {
-      formData,
-      handleSubmit,
-    };
-  },
-};
+}
 </script>
 
-<style scope>
-/* @import '/css/nes.min.css'; */
+<style>
+
 </style>
