@@ -12,7 +12,8 @@
       </span>
     </div>
   </div>
-  <ManagerDialog ref="managerDialogRef" v-model:dialogRequest="dialogRequest"/>
+  <!-- viewName: 三個按鈕會影響 form 顯示的內容  -->
+  <ManagerDialog ref="managerDialogRef" v-model:dialogRequest="dialogRequest" v-model:viewName="selectedView"/>
 </template>
 
 <!-- 改用 vue 3.2 新寫法試試  -->
@@ -50,6 +51,9 @@ const btns = ref([
 const changeBtnStatus = (coin) => {
   coin.visible = !coin.visible
 }
+
+// 點擊 menu 告訴子組件要顯示哪個 form 內容
+const selectedView = ref('AddTargetForm')
 </script>
 
 

@@ -77,7 +77,7 @@ export default {
       ip: ref(props.ipList[0].name),
     });
 
-    // argument of data from template is not ref object...
+    // 打信
     const handleSubmit = (data) => {
       sendMailApi(data)
         .then((res) => {
