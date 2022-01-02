@@ -9,7 +9,7 @@
             <i class="nes-bcrikko md:mr-10"></i>
             <!-- Balloon -->
             <div class="nes-balloon from-left">
-              <p>Hello NES.cssHello NES.cssHello NES.cssHello NES.css</p>
+              <p>Fill In This Form To Add A Target</p>
             </div>
           </div>
 

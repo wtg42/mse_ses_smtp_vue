@@ -2,7 +2,7 @@
 <template>
   <div id="container" class="bg-cover bg-center h-screen w-full">
     <!-- 選單按鈕，內容動態產生 -->
-    <div v-for="(btn, index) in btns" :key="index" :class="btn.class">
+    <div v-for="(btn, index) in btns" :key="index" :class="btn.class" @click="selectedView = btn.componentName">
       <span :class="{ invisible: btn.visible }">
         <!-- 選單硬幣 hover 才會出現 -->
         <i class="nes-icon coin is-small"></i>
@@ -12,7 +12,7 @@
       </span>
     </div>
   </div>
-  <!-- viewName: 三個按鈕會影響 form 顯示的內容  -->
+  <!-- viewName: 三個按鈕會影響 dialog 顯示的內容  -->
   <ManagerDialog ref="managerDialogRef" v-model:dialogRequest="dialogRequest" v-model:viewName="selectedView"/>
 </template>
 
@@ -29,7 +29,7 @@ import ManagerDialog from "@/components/ManagerDialog.vue";
 // router func not use
 // const goto = () => router.push({ name: routerName })
 
-// show add, edit, modify form by dialog
+// show [add], [edit], [modify] form in dialog
 const showForm = () => {
   managerDialogRef.value.showModal()
 }
@@ -42,9 +42,9 @@ const managerDialogRef = ref()
 
 // 選單 btn 用 v-for 產生 grid 屬性吃 class
 const btns = ref([
-  {key: 0, visible: true, class: 'grid-item-add', text: 'ADD NEW MSE TARGET'},
-  {key: 1, visible: true, class: 'grid-item-remove', text: 'REMOVE EXISTS TARGET'},
-  {key: 2, visible: true, class: 'grid-item-edit', text: 'MODIFY TARGET PROPERTY'},
+  {key: 0, visible: true, class: 'grid-item-add', text: 'ADD NEW MSE TARGET', componentName: 'AddTargetForm'},
+  {key: 1, visible: true, class: 'grid-item-remove', text: 'REMOVE EXISTS TARGET', componentName: 'RemoveTargetForm'},
+  {key: 2, visible: true, class: 'grid-item-edit', text: 'MODIFY TARGET PROPERTY', componentName: 'ModifyTargetForm'},
 ])
 
 // 選單 coin 的 hover 顯示狀態 控制 tailwind 的 invisible
@@ -53,6 +53,7 @@ const changeBtnStatus = (coin) => {
 }
 
 // 點擊 menu 告訴子組件要顯示哪個 form 內容
+// 必須要給一個預設值給用了 :is 的子組件，不然會有 warning 產生
 const selectedView = ref('AddTargetForm')
 </script>
 

@@ -6,12 +6,13 @@
         <i class="nes-icon close is-small" @click="dialogClose()"></i>
 
         <form method="dialog">
+          <slot></slot>
           <!-- 可用 props 顯示 -->
           <p class="title">{{ dialogRequest.title }}</p>
           <!-- 也可以用 computed 計算後顯示 -->
           <p>{{ dialogMsg.body }}</p>
-          <!-- <AddTargetForm/> -->
-          <component :is="getView"></component>
+          <!-- <AddTargetForm/> | <RemoveTargetForm> | <ModifyTargetForm> -->
+          <component :is="viewName"></component>
         </form>
       </dialog>
     </section>
@@ -19,18 +20,18 @@
 </template>
 
 <script>
-import { computed, ref, shallowRef } from "vue"
+import { computed, ref } from "vue"
 import AddTargetForm from "@/components/AddTargetForm.vue"
+import RemoveTargetForm from "@/components/RemoveTargetForm.vue"
 
 export default {
   name: "ManagerDialog",
   props: ["dialogRequest", "viewName"],
   components: {
     AddTargetForm,
+    RemoveTargetForm,
   },
   setup(props) {
-    // console.log(props.view)
-    const getView = shallowRef(props.viewName)
     // Dialog 動態顯示參數
     const dialogMsg = ref({
       title: ref(''),
@@ -46,6 +47,7 @@ export default {
     const dialogClose = () => {
       document.getElementById('dialog-rounded').close()
     }
+
     // props 再次更新可以直接使用，或是有需要計算可以放到這邊
     const setDialog = computed(() => {
       // console.log(props.dialogRequest)
@@ -55,7 +57,7 @@ export default {
     // start computed
     setDialog.value
 
-    return { getView, dialogClose, showModal, dialogMsg, setDialog }
+    return { dialogClose, showModal, dialogMsg, setDialog }
   }
 }
 </script>
