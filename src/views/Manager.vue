@@ -44,7 +44,6 @@ const managerDialogRef = ref()
 const btns = ref([
   {key: 0, visible: true, class: 'grid-item-add', text: 'ADD NEW MSE TARGET', componentName: 'AddTargetForm'},
   {key: 1, visible: true, class: 'grid-item-remove', text: 'REMOVE EXISTS TARGET', componentName: 'RemoveTargetForm'},
-  {key: 2, visible: true, class: 'grid-item-edit', text: 'MODIFY TARGET PROPERTY', componentName: 'ModifyTargetForm'},
 ])
 
 // 選單 coin 的 hover 顯示狀態 控制 tailwind 的 invisible

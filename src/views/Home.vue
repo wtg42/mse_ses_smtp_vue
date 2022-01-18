@@ -11,8 +11,8 @@
         <div class="mb-2"><i class="nes-jp-logo transform scale-50"></i></div>
         <div><h2 class="text-xl">Usage</h2></div>
       </div>
-      <p>Just send a test mail to MSE.</p>
-      <p>If you want to add IP, please edit db.json file.</p>
+      <p>Just send a mail to MSE.</p>
+      <p>You can add target into the list from manage page.😉</p>
     </section>
     <section class="icon-list mt-5">
       <!-- Copyright Nintendo -->

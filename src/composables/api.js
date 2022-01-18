@@ -14,3 +14,6 @@ export const ipListApi = () => apiInstance.get('/IPList')
 
 // 新增打信到 MSE 機器的 IP
 export const addIpListApi = data => apiInstance.post('/IPList', data)
+
+// Remove target
+export const removeTargetApi = id => apiInstance.delete(`/IPList/${id}`)

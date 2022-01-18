@@ -64,14 +64,9 @@ export default {
     // 新增
     const handleSubmit = (data) => {
       addIpListApi(data)
-        .then((res) => {
-          console.log(res)
-
-        })
-        .catch((err) => console.log(err))
-      console.log(data.name)
+        .then((res) => alert("done!"))
+        .catch((err) => alert("failed~"))
     };
-
 
     return { handleSubmit, formData }
   }
