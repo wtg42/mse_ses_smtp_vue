@@ -7,24 +7,24 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@tailwindcss/postcss7-compat": "^2.2.17",
+    "@tailwindcss/postcss7-compat": "latest",
     "autoprefixer": "^9",
-    "axios": "^0.24.0",
-    "core-js": "^3.6.5",
+    "axios": "latest",
+    "core-js": "latest",
     "json-server": "^0.17.0",
-    "nes.css": "^2.3.0",
-    "postcss": "^7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0"
+    "nes.css": "latest",
+    "postcss": "latest",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@latest",
+    "vue": "latest",
+    "vue-router": "latest"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/cli-plugin-babel": "~5.0.4",
+    "@vue/cli-plugin-router": "~5.0.4",
+    "@vue/cli-service": "~5.0.4",
+    "@vue/compiler-sfc": "latest",
     "stylelint": "^14.0.1",
     "stylelint-config-standard": "^23.0.0",
-    "vue-cli-plugin-tailwind": "~2.2.17"
+    "vue-cli-plugin-tailwind": "latest"
   }
 }
